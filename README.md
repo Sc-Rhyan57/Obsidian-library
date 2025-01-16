@@ -1,11 +1,6 @@
 ### Documentação Completa (README.md)
 
-```markdown
-# Documentação Completa do Sistema de Interface LinoriaLib
 
-Este README apresenta uma documentação detalhada e abrangente sobre o script que utiliza **LinoriaLib** para criar interfaces de usuário no Roblox. Inclui informações sobre configuração, elementos disponíveis e exemplos práticos.
-
----
 
 ## Índice
 
@@ -28,7 +23,6 @@ Este README apresenta uma documentação detalhada e abrangente sobre o script q
 6. [Exemplo Completo](#exemplo-completo)
 7. [Referências e Créditos](#referências-e-créditos)
 
----
 
 ## Introdução
 
