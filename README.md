@@ -1,44 +1,42 @@
-### Documentação Completa (README.md)
+# 🎮 Linoria UI Library Documentation
+> An advanced and feature-rich UI library for Roblox exploiting, forked from mstudio45's implementation and enhanced by deivid.
 
+## 📑 Table of Contents
+- [Features](#-features)
+- [Installation](#-installation)
+- [Basic Usage](#-basic-usage)
+- [Components](#-components)
+- [Advanced Features](#-advanced-features)
+- [Themes & Saving](#-themes--saving)
+- [Examples](#-examples)
 
+## ✨ Features
+- **Fully Customizable UI** with support for:
+  - Custom window positioning
+  - Resizable windows
+  - Custom cursor
+  - DPI scaling
+  - Right/Left notification positioning
+  - Keybind system
+- **Rich Component Library** including:
+  - Toggles with color pickers
+  - Sliders
+  - Buttons with double-click support
+  - Dropdowns (searchable, multi-select)
+  - Input fields
+  - Key pickers
+  - Labels
+  - Dividers
+- **Advanced Features**:
+  - Theme management system
+  - Configuration saving/loading
+  - Tabbed interface
+  - Groupbox organization
+  - Key system integration
 
-## Índice
+## 🚀 Installation
 
-1. [Introdução](#introdução)
-2. [Configuração Inicial](#configuração-inicial)
-3. [Estrutura Geral do Script](#estrutura-geral-do-script)
-4. [Elementos Disponíveis](#elementos-disponíveis)
-   - [Janela Principal](#janela-principal)
-   - [Abas](#abas)
-   - [Groupboxes](#groupboxes)
-   - [Toggles](#toggles)
-   - [Botões](#botões)
-   - [Labels](#labels)
-   - [Divisores](#divisores)
-   - [Sliders](#sliders)
-   - [Inputs de Texto](#inputs-de-texto)
-   - [Dropdowns](#dropdowns)
-   - [Pickers (Cor e Tecla)](#pickers-cor-e-tecla)
-5. [Gerenciamento de Configurações e Temas](#gerenciamento-de-configurações-e-temas)
-6. [Exemplo Completo](#exemplo-completo)
-7. [Referências e Créditos](#referências-e-créditos)
-
-
-## Introdução
-
-Este script é baseado na biblioteca **LinoriaLib**, permitindo criar interfaces gráficas sofisticadas com suporte a várias funcionalidades, como:
-
-- Abas e grupos.
-- Controles interativos como sliders, toggles e dropdowns.
-- Gerenciamento de configurações e temas.
-
----
-
-## Configuração Inicial
-
-### Passo 1: Carregar as Bibliotecas
-Certifique-se de carregar as dependências necessárias diretamente de um repositório:
-
+1. Include the main library files:
 ```lua
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
@@ -46,268 +44,195 @@ local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))
 local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
 ```
 
-### Passo 2: Configuração Básica
-Defina opções gerais para o funcionamento da biblioteca:
-
-```lua
-Library.ShowToggleFrameInKeybinds = true
-```
-
----
-
-## Estrutura Geral do Script
-
-A estrutura do script é organizada em seções que correspondem à criação e configuração de elementos de interface, como janelas, abas e controles interativos. 
-
-1. **Criação da Janela Principal**
-   ```lua
-   local Window = Library:CreateWindow({
-       Title = "Exemplo",
-       Footer = "Versão 1.0",
-       Icon = 1234567890,
-       NotifySide = "Right",
-       ShowCustomCursor = true,
-   })
-   ```
-
-2. **Definição de Abas**
-   ```lua
-   local Tabs = {
-       Main = Window:AddTab("Principal"),
-       Settings = Window:AddTab("Configurações"),
-   }
-   ```
-
-3. **Adição de Groupboxes**
-   ```lua
-   local GroupBox = Tabs.Main:AddLeftGroupbox("Configurações Gerais")
-   ```
-
----
-
-## Elementos Disponíveis
-
-### Janela Principal
-
-| **Propriedade**      | **Descrição**                                                     | **Valor Padrão** |
-|----------------------|-------------------------------------------------------------------|------------------|
-| `Title`             | Define o título da janela.                                       | `""`             |
-| `Footer`            | Texto exibido no rodapé da janela.                               | `""`             |
-| `Icon`              | Ícone do cabeçalho (ID de imagem do Roblox).                     | `nil`            |
-| `NotifySide`        | Lado das notificações (`Left` ou `Right`).                       | `Left`           |
-| `ShowCustomCursor`  | Exibe um cursor personalizado.                                   | `true`           |
-
----
-
-### Abas
-
-Adicione abas com o método `AddTab`:
-
-```lua
-local Tabs = {
-    Main = Window:AddTab("Principal"),
-    Settings = Window:AddTab("Configurações"),
-}
-```
-
----
-
-### Groupboxes
-
-Crie grupos de elementos em uma aba:
-
-```lua
-local GroupBox = Tabs.Main:AddLeftGroupbox("Configurações")
-```
-
----
-
-### Toggles
-
-Interruptores ativáveis/desativáveis:
-
-| **Propriedade**      | **Descrição**                          | **Valor Padrão** |
-|----------------------|----------------------------------------|------------------|
-| `Text`              | Texto exibido ao lado do toggle.       | `""`             |
-| `Default`           | Estado inicial (`true` ou `false`).    | `false`          |
-| `Callback`          | Função executada ao alterar o estado.  | `nil`            |
-
-Exemplo:
-```lua
-GroupBox:AddToggle("MeuToggle", {
-    Text = "Ativar Modo",
-    Default = false,
-    Callback = function(Value)
-        print("Toggle alterado:", Value)
-    end,
-})
-```
-
----
-
-### Botões
-
-Botões interativos com ações associadas:
-
-| **Propriedade**      | **Descrição**                          | **Valor Padrão** |
-|----------------------|----------------------------------------|------------------|
-| `Text`              | Texto exibido no botão.               | `""`             |
-| `Func`              | Função executada ao clicar.           | `nil`            |
-
-Exemplo:
-```lua
-GroupBox:AddButton({
-    Text = "Clique Aqui",
-    Func = function()
-        print("Botão clicado!")
-    end,
-})
-```
-
----
-
-### Labels
-
-Rótulos para exibir textos:
-
-```lua
-GroupBox:AddLabel("Texto Informativo")
-```
-
----
-
-### Divisores
-
-Adicione divisores visuais entre elementos:
-
-```lua
-GroupBox:AddDivider()
-```
-
----
-
-### Sliders
-
-Controles deslizantes para seleção de valores numéricos:
-
-| **Propriedade**      | **Descrição**                          | **Valor Padrão** |
-|----------------------|----------------------------------------|------------------|
-| `Text`              | Texto descritivo.                     | `""`             |
-| `Min`               | Valor mínimo.                         | `0`              |
-| `Max`               | Valor máximo.                         | `100`            |
-| `Default`           | Valor inicial.                        | `0`              |
-| `Callback`          | Função executada ao alterar o valor.  | `nil`            |
-
-Exemplo:
-```lua
-GroupBox:AddSlider("Volume", {
-    Text = "Volume",
-    Min = 0,
-    Max = 100,
-    Default = 50,
-    Callback = function(Value)
-        print("Volume ajustado para:", Value)
-    end,
-})
-```
-
----
-
-### Inputs de Texto
-
-Caixas de texto para entrada de dados:
-
-```lua
-GroupBox:AddInput("CaixaDeTexto", {
-    Default = "",
-    Text = "Digite algo",
-    Callback = function(Value)
-        print("Texto inserido:", Value)
-    end,
-})
-```
-
----
-
-### Dropdowns
-
-Listas suspensas para seleção de opções:
-
-```lua
-GroupBox:AddDropdown("Opcoes", {
-    Values = { "Opção 1", "Opção 2", "Opção 3" },
-    Default = 1,
-    Callback = function(Value)
-        print("Opção selecionada:", Value)
-    end,
-})
-```
-
----
-
-### Pickers (Cor e Tecla)
-
-Adicione seletores de cor ou teclas:
-
-```lua
-GroupBox:AddLabel("Cor"):AddColorPicker("Cor", {
-    Default = Color3.new(1, 0, 0),
-    Callback = function(Value)
-        print("Cor escolhida:", Value)
-    end,
-})
-
-GroupBox:AddLabel("Tecla"):AddKeyPicker("Tecla", {
-    Default = "MB1",
-    Callback = function(Value)
-        print("Tecla selecionada:", Value)
-    end,
-})
-```
-
----
-
-## Gerenciamento de Configurações e Temas
-
-Use os gerenciadores para salvar e carregar configurações e temas:
-
-```lua
-ThemeManager:SetLibrary(Library)
-SaveManager:SetLibrary(Library)
-SaveManager:SetFolder("Configurações")
-SaveManager:BuildConfigSection(Tabs.Settings)
-```
-
----
-
-## Exemplo Completo
-
+2. Initialize basic window:
 ```lua
 local Window = Library:CreateWindow({
-    Title = "Exemplo Completo",
-    Footer = "Versão 1.0",
+    Title = "My Application",
+    Footer = "version: 1.0.0",
+    Icon = "IconID",
+    NotifySide = "Right",
+    ShowCustomCursor = true
 })
-
-local Tabs = {
-    Main = Window:AddTab("Principal"),
-}
-
-local GroupBox = Tabs.Main:AddLeftGroupbox("Configurações")
-
-GroupBox:AddToggle("Toggle1", { Text = "Habilitar", Default = true })
-GroupBox:AddButton({ Text = "Clique Aqui", Func = function() print("Botão clicado!") end })
-GroupBox:AddLabel("Texto de exemplo")
-GroupBox:AddSlider("Slider1", { Text = "Ajuste", Min = 0, Max = 100, Default = 50 })
-GroupBox:AddInput("Input1", { Text = "Digite algo", Default = "Texto padrão" })
-GroupBox:AddDropdown("Dropdown1", { Values = { "Opção 1", "Opção 2" }, Default = 1 })
 ```
 
+## 🔧 Basic Usage
+
+### Creating Tabs & Groups
+```lua
+-- Create main tabs
+local Tabs = {
+    Main = Window:AddTab("Main", "user"),
+    Settings = Window:AddTab("Settings", "settings")
+}
+
+-- Add groupboxes to tabs
+local LeftGroup = Tabs.Main:AddLeftGroupbox("Controls")
+local RightGroup = Tabs.Main:AddRightGroupbox("Settings")
+```
+
+### Adding Basic Components
+
+1. **Toggles**:
+```lua
+LeftGroup:AddToggle("MyToggle", {
+    Text = "Example Toggle",
+    Default = false,
+    Tooltip = "This is a tooltip",
+    Callback = function(Value)
+        print("Toggle is now:", Value)
+    end
+})
+```
+
+2. **Sliders**:
+```lua
+LeftGroup:AddSlider("MySlider", {
+    Text = "Example Slider",
+    Default = 0,
+    Min = 0,
+    Max = 100,
+    Rounding = 1,
+    Compact = false
+})
+```
+
+3. **Buttons**:
+```lua
+LeftGroup:AddButton({
+    Text = "Click Me",
+    Func = function()
+        print("Button clicked!")
+    end,
+    DoubleClick = false
+})
+```
+
+## 🎨 Advanced Components
+
+### Dropdowns
+```lua
+LeftGroup:AddDropdown("MyDropdown", {
+    Values = { "Option 1", "Option 2", "Option 3" },
+    Default = 1,
+    Multi = false,
+    Text = "Select Option",
+    Tooltip = "Choose an option",
+    Searchable = true
+})
+```
+
+### Color Pickers
+```lua
+LeftGroup:AddLabel("Color"):AddColorPicker("ColorPicker", {
+    Default = Color3.new(0, 1, 0),
+    Title = "Choose Color",
+    Transparency = 0
+})
+```
+
+### Key Pickers
+```lua
+LeftGroup:AddLabel("Keybind"):AddKeyPicker("KeyPicker", {
+    Default = "MB2",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Select Key"
+})
+```
+
+## 🔐 Key System Integration
+
+```lua
+local KeyTab = Window:AddKeyTab("Key System")
+
+-- Add simple key verification
+KeyTab:AddKeyBox("MyKey", function(Success, ReceivedKey)
+    if Success then
+        print("Correct key entered!")
+    end
+end)
+```
+
+## 💾 Saving & Theme Management
+
+### Configure Save Manager
+```lua
+SaveManager:SetFolder("MyScriptHub")
+SaveManager:SetSubFolder("GameName")
+SaveManager:BuildConfigSection(Tabs["Settings"])
+```
+
+### Setup Theme Manager
+```lua
+ThemeManager:SetLibrary(Library)
+ThemeManager:SetFolder("MyScriptHub")
+ThemeManager:ApplyToTab(Tabs["Settings"])
+```
+
+## 🎛️ UI Settings
+
+```lua
+-- Add UI control options
+local MenuGroup = Tabs.Settings:AddLeftGroupbox("Menu")
+
+MenuGroup:AddToggle("KeybindFrame", {
+    Text = "Show Keybinds",
+    Default = true
+})
+
+MenuGroup:AddDropdown("DPIScale", {
+    Values = { "100%", "125%", "150%" },
+    Default = "100%",
+    Text = "DPI Scale"
+})
+```
+
+## ⚡ Performance Tips
+
+1. **Callback Optimization**:
+   - Use `:OnChanged()` instead of inline callbacks
+   - Keep callback functions lightweight
+   - Avoid heavy computations in UI updates
+
+2. **Memory Management**:
+   - Store references to frequently used components
+   - Use `Library:Unload()` when cleaning up
+   - Properly handle connections and events
+
+## 🚨 Common Pitfalls
+
+1. **Avoid** direct manipulation of UI elements outside their intended methods
+2. **Don't** create excessive numbers of components - use scrollable containers
+3. **Remember** to handle errors in callbacks to prevent UI crashes
+
+## 🔧 Troubleshooting
+
+If you encounter issues:
+
+1. **UI Not Showing**:
+   - Check if `Window:Show()` was called
+   - Verify the loading order of scripts
+   - Ensure proper game context
+
+2. **Callbacks Not Firing**:
+   - Verify callback function syntax
+   - Check for scope issues
+   - Ensure components are properly initialized
+
+3. **Save System Issues**:
+   - Verify folder permissions
+   - Check for proper initialization
+   - Ensure proper data serialization
+
+## 📚 Additional Resources
+
+- [Original Repository](https://github.com/mstudio45/LinoriaLib)
+- [Modified Version](https://github.com/deividcomsono/Obsidian)
+
+## 📝 License
+
+This project is licensed under MIT - see the LICENSE file for details.
+
 ---
 
-## Referências e Créditos
-
-- [LinoriaLib](https://github.com/mstudio45/LinoriaLib)
-- Modificado por Deivid.
-
----
-
+*For more examples and detailed API documentation, please check the examples folder in the repository.*
