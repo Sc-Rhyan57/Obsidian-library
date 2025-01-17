@@ -35,6 +35,8 @@
   - Key system integration
 
 ## 🚀 Installation
+How to get the icons:
+[ICONES PARA OBSIDIAN-LIBRARY](https://lucide.dev/)
 
 1. Include the main library files:
 ```lua
