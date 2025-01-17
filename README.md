@@ -1,4 +1,4 @@
-# 🎮 Linoria UI Library Documentation
+# 🎮 Obisidian UI Library Documentation
 > An advanced and feature-rich UI library for Roblox exploiting, forked from mstudio45's implementation and enhanced by deivid.
 
 ## 📑 Table of Contents
